@@ -1,0 +1,67 @@
+
+body {
+    background-color: #eee;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh
+}
+
+.nav-header {
+    margin-left: 2vh;
+}
+
+.nav-btn {
+    margin-left: 2vh;
+    margin-right: 2vh;
+}
+
+.card {
+    width: 40vh;
+    padding: 20px;
+    border: none;
+    height: 50vh;
+}
+
+.big-div {
+    display: flex;
+    width: 2000px;
+    height: 1000px;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.board {
+    margin-left: 2.5vh;
+    margin-right: 2.5vh;
+    margin-top: 5vh;
+    width: 40vh;
+    height: 80vh;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.scroll-area-sm {
+    height: 80vh;
+    overflow-x: hidden
+}
+
+.backlog-header {
+    background-color: salmon;
+    font-style: italic;
+}
+
+.todo-header {
+    background-color: palegoldenrod;
+    font-style: italic;
+}
+
+.doing-header {
+    background-color: dodgerblue;
+    font-style: italic;
+}
+
+.done-header {
+    background-color: greenyellow;
+    font-style: italic;
+}
