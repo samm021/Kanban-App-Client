@@ -25,8 +25,8 @@ body {
 
 .big-div {
     display: flex;
-    width: 2000px;
-    height: 1000px;
+    width: 1980px;
+    height: 1080px;
     flex-flow: row wrap;
     justify-content: center;
 }
@@ -42,8 +42,8 @@ body {
 }
 
 .scroll-area-sm {
-    height: 80vh;
-    overflow-x: hidden
+    height: 70vh;
+    overflow-x: hidden;
 }
 
 .backlog-header {
@@ -57,7 +57,7 @@ body {
 }
 
 .doing-header {
-    background-color: dodgerblue;
+    background-color: cornflowerblue;
     font-style: italic;
 }
 
