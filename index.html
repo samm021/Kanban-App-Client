@@ -9,21 +9,17 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://kit.fontawesome.com/41627ff07f.js" crossorigin="anonymous"></script>
+
     <title>Glasgow Kanban</title>
   </head>
   <body>
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="nav-header">
+          <div class="nav-header d-flex w-100 justify-content-between">
               <h4>Kanban Board</h4>
+              <button class="nav-btn btn btn-warning my-2 my-sm-0" type="submit">Logout</button>
           </div>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-              
-          </ul>
-            <button class="nav-btn btn btn-warning my-2 my-sm-0" type="submit">Logout</button>
-        </div>
       </nav>
 
     
@@ -35,12 +31,13 @@
                 <a href="#" class="backlog-header list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1">Backlog</h4>
+                    <span class="btn-body">
+                      <button class="btn">
+                        <i class="fa fa-plus align-self-center" aria-hidden="true"></i>
+                      </button>
+                    </span>
                   </div>
-                  <!-- <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                  </button> -->
                 </a>
-
                 <div class="scroll-area-sm">
                     <perfect-scrollbar class="ps-show-limits">
                         <div style="position: static;" class="ps ps--active-y">
@@ -53,7 +50,29 @@
                                     <p class="mb-1">task detail written at 5pm</p>
                                     <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                      <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
                                   </a>
                                   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -64,7 +83,29 @@
                                     <p class="mb-1">task detail written at 5pm</p>
                                     <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                        <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
                                   </a>
                                   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -75,7 +116,29 @@
                                     <p class="mb-1">task detail written at 5pm</p>
                                     <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                        <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
                                   </a>
                                   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -86,7 +149,29 @@
                                     <p class="mb-1">task detail written at 5pm</p>
                                     <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                        <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
                                   </a>
                                   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -97,7 +182,29 @@
                                     <p class="mb-1">task detail written at 5pm</p>
                                     <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                        <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
                                   </a>
                                   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -108,7 +215,29 @@
                                     <p class="mb-1">task detail written at 5pm</p>
                                     <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                        <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
                                   </a>
                                 </a>
@@ -125,6 +254,11 @@
                 <a href="#" class="todo-header list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1">To Do</h4>
+                    <span class="btn-body">
+                      <button class="btn">
+                        <i class="fa fa-plus align-self-center" aria-hidden="true"></i>
+                      </button>
+                    </span>
                   </div>
                 </a>
 
@@ -140,7 +274,29 @@
                                     <p class="mb-1">task detail written at 5pm</p>
                                     <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                        <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
 
                                   </a>
@@ -156,6 +312,11 @@
                 <a href="#" class="doing-header list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1">Doing</h4>
+                    <span class="btn-body">
+                      <button class="btn">
+                        <i class="fa fa-plus align-self-center" aria-hidden="true"></i>
+                      </button>
+                    </span>
                   </div>
                 </a>
 
@@ -191,7 +352,29 @@
                                     <p class="mb-1">task detail written at 5pm</p>
                                     <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                        <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
                                   </a>
                                   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -202,7 +385,29 @@
                                     <p class="mb-1">task detail written at 5pm</p>
                                     <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                        <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
                                   </a>
 
@@ -219,6 +424,11 @@
                 <a href="#" class="done-header list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1">Done</h4>
+                    <span class="btn-body">
+                      <button class="btn">
+                        <i class="fa fa-plus align-self-center" aria-hidden="true"></i>
+                      </button>
+                    </span>
                   </div>
                 </a>
 
@@ -232,9 +442,31 @@
                                       <small class="text-muted">by Bon</small>
                                     </div>
                                     <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-start">
+                                    <div class="d-flex w-100 justify-content-between">
                                       <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">edit</small>
+                                        <small class="text-muted">
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>
+                                        <span class="btn-body">
+                                          <button class="btn">
+                                            <small class="text-muted">
+                                              <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </small>
+                                          </button>
+                                        </span>                                     
+                                      </small>
                                     </div>
                                   </a>
 
