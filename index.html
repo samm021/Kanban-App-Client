@@ -11,14 +11,97 @@
 
     <script src="https://kit.fontawesome.com/41627ff07f.js" crossorigin="anonymous"></script>
 
+    <!-- <meta name="google-signin-client_id" content="141969560150-3kf3jqcr8eg4unqo0fciu9f9ntuvpjl6.apps.googleusercontent.com"> -->
     <title>Glasgow Kanban</title>
   </head>
   <body>
+    <div id="app">
 
+
+      <div class="container h-100" v-show="page==='login'">
+        <div class="d-flex justify-content-center h-100">
+          <div class="user_card">
+            <div class="text-center intro"> <img src="https://cdn1.iconfinder.com/data/icons/project-management-color-line-vol-1/512/KANBAN-512.png" width="160"></div>
+            <div class="text-center intro"><h3>看KAN板BAN</h3></div>
+            <div class="d-flex justify-content-center form_container">
+              <form @submit.prevent="loginPost">
+                <div class="input-group mb-3">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                  </div>
+                  <input type="text" v-model="login.email" class="form-control" value="" placeholder="email">
+                </div>
+                <div class="input-group mb-2">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                  <input type="password" v-model="login.password" class="form-control" value="" placeholder="password">
+                </div>
+                <div class="form-group">
+                </div>
+                  <div class="d-flex justify-content-center mt-3 login_container">
+               <button type="submit" name="button" class="btn custom-btn form-control">Login</button>
+               </div>
+              </form>
+            </div>
+            <div class="mt-4">
+              <div class="d-flex justify-content-center">
+                Don't have an account? <a @click.prevent="goRegister()" href="#" class="ml-2">Sign Up</a>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="g-sign">
+                  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container h-100" v-show="page==='register'">
+        <div class="d-flex justify-content-center h-100">
+          <div class="user_card">
+            <div class="text-center intro"> <img src="https://cdn1.iconfinder.com/data/icons/project-management-color-line-vol-1/512/KANBAN-512.png" width="160"></div>
+            <div class="text-center intro"><h3>看KAN板BAN</h3></div>
+            <div class="d-flex justify-content-center form_container">
+              <form @submit.prevent="registerPost">
+                <div class="input-group mb-3">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                  </div>
+                  <input type="email" v-model="register.email" class="form-control" value="" placeholder="email">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input type="text" v-model="register.name" class="form-control" value="" placeholder="name">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="password" v-model="register.password" class="form-control" value="" placeholder="password">
+                </div>
+                <div class="form-group">
+                </div>
+                  <div class="d-flex justify-content-center mt-3 login_container">
+               <button type="submit" name="button" class="btn custom-btn form-control">Register</button>
+               </div>
+               <div class="d-flex justify-content-center mt-3 login_container">
+                <button type="button" name="button" class="btn btn-danger form-control" @click.event="checkAuth">Cancel</button>
+                </div>  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="content" v-show="page==='content'">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="nav-header d-flex w-100 justify-content-between">
-              <h4>Kanban Board</h4>
-              <button class="nav-btn btn btn-warning my-2 my-sm-0" type="submit">Logout</button>
+              <h4>看KAN板BAN</h4>
+              <button class="nav-btn btn btn-warning my-2 my-sm-0" type="submit" @click.event="logout">Logout</button>
           </div>
       </nav>
 
@@ -42,205 +125,12 @@
                     <perfect-scrollbar class="ps-show-limits">
                         <div style="position: static;" class="ps ps--active-y">
                             <div class="ps-content">
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                      <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
-                                  </a>
-                                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                        <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
-                                  </a>
-                                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                        <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
-                                  </a>
-                                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                        <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
-                                  </a>
-                                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                        <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
-                                  </a>
-                                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                        <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
-                                  </a>
-                                </a>
+                              <div class="add-todo-form">
+
+                              </div>
+                              <div class="list-todo">
+                                
+                              </div>
                             </div>
                         </div>
                     </perfect-scrollbar>
@@ -266,40 +156,12 @@
                     <perfect-scrollbar class="ps-show-limits">
                         <div style="position: static;" class="ps ps--active-y">
                             <div class="ps-content">
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                        <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
+                                <div class="add-todo-form">
 
-                                  </a>
+                                </div>
+                                <div class="list-todo">
+                                  
+                                </div>
                             </div>
                         </div>
                     </perfect-scrollbar>
@@ -320,97 +182,18 @@
                   </div>
                 </a>
 
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
 
-                  <form class="flex-row align-items-end">
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="task">
-                    </div>
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="task detail">
-                    </div>
-                    <div class="form-group">
-                      <input class="form-control" type="date">
-                    </div>
-                  </form>
-
-                  <div class="d-flex w-100 justify-content-between">
-                    <button class="nav-btn btn btn-outline-primary my-2 my-sm-0" type="submit">Submit Task</button>
-                    <button class="nav-btn btn btn-outline-danger my-2 my-sm-0" type="submit">Cancel</button>
-                  </div>
-                </a>
 
                 <div class="scroll-area-sm">
                     <perfect-scrollbar class="ps-show-limits">
                         <div style="position: static;" class="ps ps--active-y">
                             <div class="ps-content">
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                        <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
-                                  </a>
-                                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                        <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
-                                  </a>
+                              <div class="add-todo-form">
 
+                              </div>
+                              <div class="list-todo">
+                                
+                              </div>
 
                             </div>
                         </div>
@@ -436,60 +219,12 @@
                     <perfect-scrollbar class="ps-show-limits">
                         <div style="position: static;" class="ps ps--active-y">
                             <div class="ps-content">
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <h5 class="mb-1">Task</h5>
-                                      <small class="text-muted">by Bon</small>
-                                    </div>
-                                    <p class="mb-1">task detail written at 5pm</p>
-                                    <div class="d-flex w-100 justify-content-between">
-                                      <small class="text-muted">due 20 march 2021</small>
-                                        <small class="text-muted">
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-bars" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>
-                                        <span class="btn-body">
-                                          <button class="btn">
-                                            <small class="text-muted">
-                                              <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </small>
-                                          </button>
-                                        </span>                                     
-                                      </small>
-                                    </div>
-                                  </a>
+                              <div class="add-todo-form">
 
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-
-                                  <form class="flex-row align-items-end">
-                                    <div class="form-group">
-                                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="task">
-                                    </div>
-                                    <div class="form-group">
-                                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="task detail">
-                                    </div>
-                                    <div class="form-group">
-                                      <input class="form-control" type="date">
-                                    </div>
-                                  </form>
-                
-                                  <div class="d-flex w-100 justify-content-between">
-                                    <button class="nav-btn btn btn-outline-info my-2 my-sm-0" type="submit">Edit Task</button>
-                                    <button class="nav-btn btn btn-outline-danger my-2 my-sm-0" type="submit">Cancel</button>
-                                  </div>
-                                </a>
+                              </div>
+                              <div class="list-todo">
+                                
+                              </div>
                             </div>
                         </div>
                     </perfect-scrollbar>
@@ -498,10 +233,15 @@
         </div>
 
     </div>
-
-
+    </div>
+    </div>
+  </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+    <script src="./script.js"></script>
   </body>
 </html>

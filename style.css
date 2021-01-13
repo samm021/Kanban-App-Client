@@ -1,10 +1,45 @@
 
 body {
-    background-color: #eee;
+    background-color:whitesmoke;
     justify-content: center;
     align-items: center;
 }
 
+.user_card {
+    height: 55vh;
+    width: 40vh;
+    margin-top: 20vh;
+    color: black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.ml-2 {
+    color: salmon;
+} 
+
+.custom-btn {
+    background: yellowgreen;
+    color: white;
+}
+
+.g-sign {
+    padding-top: 1vh;
+}
+
+h3 {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.big-div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
 .btn-body .btn {
     padding: 0em;
     background-color: transparent;
@@ -32,12 +67,6 @@ body {
     padding: 20px;
     border: none;
     height: 50vh;
-}
-
-.big-div {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
 }
 
 
