@@ -49,13 +49,12 @@ export default {
         ListDone
     },
     props: ['tasks'],
-
     watch: {
         tasks() {
-            this.backlogTasks = this.tasks.filter(task => task.category == 'backlog');
-            this.todoTasks = this.tasks.filter(task => task.category == 'todo');
-            this.doingTasks = this.tasks.filter(task => task.category == 'doing');
-            this.doneTasks = this.tasks.filter(task => task.category == 'done');
+            this.backlogTasks = this.tasks.filter(task => task.category == 'backlog').reverse();
+            this.todoTasks = this.tasks.filter(task => task.category == 'todo').reverse();
+            this.doingTasks = this.tasks.filter(task => task.category == 'doing').reverse();
+            this.doneTasks = this.tasks.filter(task => task.category == 'done').reverse();
         }
     }
 }

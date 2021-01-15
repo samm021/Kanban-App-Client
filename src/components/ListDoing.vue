@@ -26,7 +26,7 @@
                 
                 <div class="d-flex w-100 justify-content-between">
                 <button class="nav-btn btn btn-outline-primary my-2 my-sm-0" type="submit">Submit Task</button>
-                <button @click="cancel" class="nav-btn btn btn-outline-danger my-2 my-sm-0" data-toggle="collapse" href="#collapseAddDoing" role="button" aria-expanded="false" aria-controls="collapseAdd">Cancel</button>
+                <button @click="cancel" class="nav-btn btn btn-outline-danger my-2 my-sm-0" data-toggle="collapse" href="#collapseAddDoing" type="button" aria-expanded="false" aria-controls="collapseAdd">Cancel</button>
                 </div>
                 </form>
             </div>
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+
 import Card from './Card.vue';
 import axios from 'axios';
 
@@ -59,7 +60,7 @@ export default {
         return {
             doingTitle: '',
             doingDetail: '',
-            doingDate: ''
+            doingDate: '',
         }
     },
     methods: {
@@ -70,7 +71,7 @@ export default {
             try {
                 await axios({
                     method: 'POST',
-                    url: `http://localhost:3000/tasks`,
+                    url: `https://kanban-server-samm021.herokuapp.com/tasks`,
                     data: {
                         title: this.doingTitle,
                         detail: this.doingDetail,
@@ -85,9 +86,13 @@ export default {
                 this.doingDetail = '';
                 this.doingDate = '';
                 this.$emit('regetTasksDoing');
-            }
-            catch(err) {
-                console.log(err)
+            } 
+            catch (err) {
+                err.response.data = Array.isArray(err.response.data) ? err.response.data[0] : err.response.data;
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data.message,
+                });
             }
         },
         cancel() {

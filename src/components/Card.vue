@@ -85,9 +85,6 @@ export default {
             categories: ['backlog', 'todo', 'doing', 'done']
         }
     },
-    components: {
-        
-    },
     methods: {
         changeCard() {
             this.side === 'view' ? this.side = 'edit' : this.side = 'view';
@@ -96,7 +93,7 @@ export default {
             try {
                 let getTask = await axios({
                     method: 'GET',
-                    url: `http://localhost:3000/tasks/${this.task.id}`,
+                    url: `https://kanban-server-samm021.herokuapp.com/tasks/${this.task.id}`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     }
@@ -105,15 +102,19 @@ export default {
                 this.editDetail = getTask.data.detail;
                 this.editDueDate = this.formatDate(getTask.data.due_date);
                 this.changeCard();
-            } catch (err) {
-                console.log(err)
+            } 
+            catch (err) {
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data.message,
+                });
             }
         },
         async putTask() {
             try {
                 await axios({
                     method: 'PUT',
-                    url: `http://localhost:3000/tasks/${this.task.id}`,
+                    url: `https://kanban-server-samm021.herokuapp.com/tasks/${this.task.id}`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     },
@@ -125,15 +126,20 @@ export default {
                 });
                 this.changeCard();
                 this.$emit('regetTaskPut');
-            } catch (err) {
-                console.log(err.response)
+            } 
+            catch (err) {
+                err.response.data = Array.isArray(err.response.data) ? err.response.data[0] : err.response.data;
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data.message,
+                });
             }
         },
         async patchTask(category) {
             try {
                 await axios({
                     method: 'PATCH',
-                    url: `http://localhost:3000/tasks/${this.task.id}`,
+                    url: `https://kanban-server-samm021.herokuapp.com/tasks/${this.task.id}`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     },
@@ -142,22 +148,30 @@ export default {
                     }
                 });
                 this.$emit('regetTaskPut');
-            } catch (err) {
-                console.log(err.response)
+            } 
+            catch (err) {
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data.message,
+                });
             }
         },
         async deleteTask() {
             try {
-                const task = await axios({
+                await axios({
                     method: 'DELETE',
-                    url: `http://localhost:3000/tasks/${this.task.id}`,
+                    url: `https://kanban-server-samm021.herokuapp.com/tasks/${this.task.id}`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     },
                 });
                 this.$emit('regetTaskPut');
-            } catch (err) {
-                console.log(err.response)
+            } 
+            catch (err) {
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data.message,
+                });
             }
         },
         formatDate(date) {
@@ -166,6 +180,7 @@ export default {
     },
     props: ['task'],
     created() {
+            this.showId = this.task
             this.showTitle =  this.task.title,
             this.showDetail =  this.task.detail,
             this.showDate =  this.task.due_date,

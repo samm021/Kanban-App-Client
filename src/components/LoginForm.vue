@@ -54,7 +54,7 @@ export default {
             loginEmail: '',
             loginPassword: '',
             params: {
-                client_id: '141969560150-thp5c1v630978ct6ejte7k0chgd86eus.apps.googleusercontent.com'
+                client_id: '141969560150-700va3sn4kqbei7md0j63pak4hpk4uhh.apps.googleusercontent.com'
             },
             renderParams: {
                 width: 250,
@@ -69,7 +69,7 @@ export default {
     methods: {
         async loginPost() {
             try {
-                const user = await axios.post(`http://localhost:3000/login`, {
+                const user = await axios.post(`https://kanban-server-samm021.herokuapp.com/login`, {
                     email: this.loginEmail,
                     password: this.loginPassword
                 });
@@ -78,8 +78,12 @@ export default {
                 localStorage.setItem('access_token', user.data.access_token);
                 this.$emit('goLogin', 'home');
                 this.$emit('reGetTasks')
-            } catch (err) {
-                console.log(err.response);
+            } 
+            catch (err) {
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data.message,
+                });
             }
         },
         toRegister() {
@@ -90,7 +94,7 @@ export default {
             try {
                 const user = await axios({
                     method: 'POST',
-                    url: 'http://localhost:3000/google',
+                    url: 'https://kanban-server-samm021.herokuapp.com/google',
                     data: {
                         id_token: googleUser.getAuthResponse().id_token
                     }
@@ -98,9 +102,12 @@ export default {
                 localStorage.setItem('access_token', user.data.access_token);
                 this.$emit('goLogin', 'home');
                 this.$emit('reGetTasks');
-            }
-            catch(err) {
-                console.log(err.response);
+            } 
+            catch (err) {
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data.message,
+                });
             }
         }
     }

@@ -58,7 +58,7 @@ export default {
     methods: {
         async registerPost() {
             try {
-                await axios.post(`http://localhost:3000/register`, {
+                const user = await axios.post(`https://kanban-server-samm021.herokuapp.com/register`, {
                     email: this.registerEmail,
                     name: this.registerName,
                     password: this.registerPassword
@@ -67,8 +67,12 @@ export default {
                 this.registerName = '';
                 this.registerPassword = '';
                 this.$emit('goRegister', 'login');
-            } catch (err) {
-                console.log(err);
+            } 
+            catch (err) {
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data[0].message,
+                });
             }
         },
         cancel() {

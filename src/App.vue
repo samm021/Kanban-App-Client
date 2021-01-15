@@ -26,7 +26,7 @@ export default {
     name: "App",
     data() {
         return {
-            page: '',
+            page: 'login',
             tasks: '',
         }
     },
@@ -51,14 +51,18 @@ export default {
             try {
                 let tasks = await axios({
                     method: 'GET',
-                    url: `http://localhost:3000/tasks`,
+                    url: `https://kanban-server-samm021.herokuapp.com/tasks`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     }
                 });
                 this.tasks = tasks.data;
-            } catch (err) {
-                console.log(err.response);
+            }
+            catch (err) {
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data.message,
+                });
             }
         }
 

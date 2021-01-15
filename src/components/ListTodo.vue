@@ -27,7 +27,7 @@
 
                 <div class="d-flex w-100 justify-content-between">
                 <button class="nav-btn btn btn-outline-primary my-2 my-sm-0" type="submit">Submit Task</button>
-                <button @click="cancel" class="nav-btn btn btn-outline-danger my-2 my-sm-0" data-toggle="collapse" href="#collapseAddTodo" role="button" aria-expanded="false" aria-controls="collapseAdd">Cancel</button>
+                <button @click="cancel" class="nav-btn btn btn-outline-danger my-2 my-sm-0" data-toggle="collapse" href="#collapseAddTodo" type="button" aria-expanded="false" aria-controls="collapseAdd">Cancel</button>
                 
                 </div>
                 </form>
@@ -59,7 +59,8 @@ export default {
         return {
             todoTitle: '',
             todoDetail: '',
-            todoDate: '' 
+            todoDate: '',
+            todoCategory: 'todo'
         }
     },
     methods: {
@@ -67,17 +68,15 @@ export default {
             this.$emit('regetTaskPut')
         },
         async addTodo() {
-            console.log(this.todoDate);
             try {
-                console.log(this.todoDate);
                 await axios({
                     method: 'POST',
-                    url: `http://localhost:3000/tasks`,
+                    url: `https://kanban-server-samm021.herokuapp.com/tasks`,
                     data: {
                         title: this.todoTitle,
                         detail: this.todoDetail,
                         due_date: this.todoDate,
-                        category: 'todo'
+                        category: this.todoCategory
                     },
                     headers: {
                         access_token: localStorage.getItem('access_token')
@@ -87,9 +86,13 @@ export default {
                 this.todoDetail = '';
                 this.todoDate = '';
                 this.$emit('regetTasksTodo');
-            }
-            catch(err) {
-                console.log(err)
+            } 
+            catch (err) {
+                err.response.data = Array.isArray(err.response.data) ? err.response.data[0] : err.response.data;
+                this.$swal({
+                    icon: 'warning',
+                    text: err.response.data.message,
+                });
             }
         },
         cancel() {

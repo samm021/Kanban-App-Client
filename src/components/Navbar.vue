@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import GoogleLogin from 'vue-google-login';
 export default {
   name: 'Navbar',
   methods: {
