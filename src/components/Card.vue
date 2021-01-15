@@ -183,7 +183,7 @@ export default {
             this.showId = this.task
             this.showTitle =  this.task.title,
             this.showDetail =  this.task.detail,
-            this.showDate =  this.task.due_date,
+            this.showDate =  new Date(this.task.due_date.substring(0, 10)).toString().substring(0, 15)
             this.showName = this.task.User.name,
             this.categories = this.categories.filter(category => category !== this.task.category)
     },
@@ -191,7 +191,7 @@ export default {
         task() {
             this.showTitle =  this.task.title,
             this.showDetail =  this.task.detail,
-            this.showDate =  this.task.due_date,
+            this.showDate =  new Date(this.task.due_date.substring(0, 10)).toString().substring(0, 15)
             this.showName = this.task.User.name
         }
     }
