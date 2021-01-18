@@ -1,29 +1,34 @@
 <template>
     <div class="content">
-        <list-backlog 
+        <list 
         :tasks="backlogTasks"
+        :state="state[0]"
         @regetTasksBacklog="regetTasks"
-        @regetTaskPut="regetTaskPut"></list-backlog>
-        <list-todo 
+        @regetTaskPut="regetTaskPut"></list>
+        <list 
         :tasks="todoTasks"
+        :state="state[1]"
         @regetTasksTodo="regetTasks"
-        @regetTaskPut="regetTaskPut"></list-todo>
-        <list-doing 
+        @regetTaskPut="regetTaskPut"></list>
+        <list 
         :tasks="doingTasks"
+        :state="state[2]"
         @regetTasksDoing="regetTasks"
-        @regetTaskPut="regetTaskPut"></list-doing>
-        <list-done 
+        @regetTaskPut="regetTaskPut"></list>
+        <list 
         :tasks="doneTasks"
+        :state="state[3]"
         @regetTasksDone="regetTasks"
-        @regetTaskPut="regetTaskPut"></list-done>
+        @regetTaskPut="regetTaskPut"></list>
     </div>
 </template>
 
 <script>
-import ListBacklog from './ListBacklog.vue';
-import ListDoing from './ListDoing.vue';
-import ListDone from './ListDone.vue';
-import ListTodo from './ListTodo.vue';
+import List from './List.vue'
+// import ListBacklog from './ListBacklog.vue';
+// import ListDoing from './ListDoing.vue';
+// import ListDone from './ListDone.vue';
+// import ListTodo from './ListTodo.vue';
 export default {
     name: 'Content',
     data() {
@@ -31,7 +36,8 @@ export default {
             backlogTasks: '',
             todoTasks: '',
             doingTasks: '',
-            doneTasks: ''
+            doneTasks: '',
+            state: ['backlog', 'todo', 'doing', 'done']
         }
     },
     methods: {
@@ -43,10 +49,11 @@ export default {
         },
     },
     components: {
-        ListBacklog,
-        ListTodo,
-        ListDoing,
-        ListDone
+        List
+        // ListBacklog,
+        // ListTodo,
+        // ListDoing,
+        // ListDone
     },
     props: ['tasks'],
     watch: {
